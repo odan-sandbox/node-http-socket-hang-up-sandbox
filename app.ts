@@ -20,11 +20,13 @@ async function init() {
 async function request (url: string) {
   return new Promise((resolve, reject) => {
     const req = http.request(url, res => {
+
       res.on("data", chunk => {
         console.log(`BODY: ${chunk.length}`);
       });
       res.on("end", () => {
         console.log("No more data in response.");
+        req.end()
       });
       resolve()
     });
@@ -33,7 +35,6 @@ async function request (url: string) {
       reject(e)
     });
     req.end();
-
   })
 }
 
