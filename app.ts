@@ -5,7 +5,7 @@ const sleep = (msec: number) =>
   new Promise(resolve => setTimeout(resolve, msec));
 
 async function init() {
-    const command = "docker run --rm -p 5650:80 nginx";
+    const command = "yarn start:server";
     const appProcess = exec(command);
     appProcess.stdout!.pipe(process.stdout);
     appProcess.stderr!.pipe(process.stderr);
